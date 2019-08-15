@@ -1,0 +1,125 @@
+/*--------------Buttons------------*/
+
+.btn {
+  font-size: 10px;
+}
+
+.btn-sml {
+  height: 24px;
+  width: 80px;
+  line-height: 24px;
+  margin: 5px 5px;
+  padding: 0 0.5em;
+}
+
+.submit_btn {
+  height: 25px;
+  font-size: 10px;
+  line-height: 26px;
+}
+
+.btn,
+.btn-large {
+  background-color: black;
+}
+
+.btn:hover,
+.btn-large:hover {
+  background-color: #263238;
+}
+
+/*--------------Headings------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #263238;
+}
+
+.page_heading {
+  font-size: 20px;
+}
+
+.heading {
+  color: black;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.sub_heading {
+  font-size: 15px;
+}
+
+
+/*---------------Navbar---------------*/
+
+.index-logo {
+  position:relative;
+    z-index:200;
+    left:50%;
+    margin-left:-160px;
+    top:30px;
+    display:block;
+    max-width: 300px;
+    width: 90%;
+ }
+nav {
+  background-color: #90a4ae;
+}
+
+.heading-row {
+  margin-bottom: 5px;
+}
+
+
+
+  /*---------------Navbar---------------*/
+  nav .brand-logo {
+    font-size: 30px;
+  }
+
+  /*--------------Search Bar---------------*/
+
+
+  .material-icons {
+    font-size: 30px;
+  }
+
+  .input-field input[type=search]~.material-icons {
+    font-size: 25px;
+  }
+
+}
+
+/*-----------------------------------------Desktop media-----------------------------------------*/
+
+
+@media (min-width: 1024px) {
+  /*--------------Buttons------------*/
+  .submit_btn {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  /*--------------Headings------------*/
+  .page_heading {
+    font-size: 50px;
+  }
+
+  .sub_heading {
+    font-size: 30px;
+  }
+  /*---------------Navbar---------------*/
+  nav .brand-logo {
+    font-size: 50px;
+    padding-left: 25px;
+  }
+
+  /*---------------Recipe Cards---------------*/
+  .card .card-title {
+    font-size: 30px;
+  }
+}

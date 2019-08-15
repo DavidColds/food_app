@@ -23,29 +23,33 @@
 
 <body>
   <nav>
-        <li></li>
-        <li>All Recipes</a></li>
+    <div class="nav-wrapper navbar">
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
 
 
         {% if 'username' in session %}
-        <li>Create Recipes</a></li>
-        <li>Logout</a></li>
+        <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
 
 
         {% else %}
-        <li>Login</a></li>
-        <li>Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
       </ul>
-        <li>Home</a></li>
-        <li>All Recipes</a></li>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
         {% if 'username' in session %}
-        <li>Create Recipes</a></li>
-        <li>Logout</a></li>
+        <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
 
         {% else %}
-        <li>Login</a></li>
-        <li>Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
       </ul>
     </div>

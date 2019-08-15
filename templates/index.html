@@ -9,32 +9,48 @@
   <a href="{{ url_for('index') }}" class="btn-floating red darken-1 tooltipped waves-effect waves-dark center custom-animate" data-tooltip="Reset Filters"><i class="material-icons">autorenew</i></a>
 </div>
 {% endif %}
+
 <div class="container">
   <form action="{{ url_for('filter') }}" method="POST">
     <div class="row">
-      <div class="input-field col s12 m6 ">
-        <select multiple id="category_name" name="category_name">
-          <option value="" disabled selected>Choose category</option>
-          {% for category in categories %}
-          <option value="{{category.category_name}}">{{category.category_name}}</option>
-          {% endfor %}
-        </select>
-        <label class="white-text">Category</label>
-      </div>
+        <div class="input-field col s12 m6 ">
+          <select multiple id="category_name" name="category_name">
+            <option value="" disabled selected>Choose category</option>
+            {% for category in categories %}
+            <option value="{{category.category_name}}">{{category.category_name}}</option>
+            {% endfor %}
+          </select>
+          <label class="white-text">Category</label>
+        </div>
 
-      <div class="input-field col s12 m6 ">
-        <select multiple id="allergen_name" name="allergen_name">
-          <option value="" disabled selected>Choose allergen</option>
-          {% for allergy in allergens %}
-          <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
-          {% endfor %}
-        </select>
-        <label class="white-text">Allergens</label>
-        <button class="btn submit_btn" type="submit">Search Recipes</button>
-      </div>
+        <div class="input-field col s12 m6 ">
+          <select multiple id="allergen_name" name="allergen_name">
+            <option value="" disabled selected>Choose allergen</option>
+            {% for allergy in allergens %}
+            <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
+            {% endfor %}
+          </select>
+          <label class="white-text">Allergens</label>
+          <button class="btn submit_btn" type="submit">Search Recipes</button>
+        </div>
     </div>
   </form>
 
+  <!---  Search --->
+      <div class="col s12 m6">
+        <div class="search">
+          <form action="{{ url_for('search') }}" method="POST" class="search_box">
+            <div class="input-field search-bar">
+              <input id="search" type="search" required="" name="search_term">
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+            <button class="btn submit_btn" type="submit">Search Recipes</button>
+          </form>
+        </div>
+      </div>
+
+  <!---  Card --->
   <div class="row" id="index">
     {% for recipe in recipes %}
     <div class="col s12 m6 l4">

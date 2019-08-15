@@ -46,6 +46,10 @@ def get_recipes():
 
 @app.route('/add_recipe')
 def add_recipe():
+    return render_template('addrecipe.html',
+                            categories=mongo.db.category.find(),
+                            allergens=mongo.db.allergen.find(),
+                            preparation=mongo.db.preparation.find())
 
 
 "Submit recipe to database"

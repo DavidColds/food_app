@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,10 +61,66 @@
       <div class="title">
         {% if 'username' in session %}
         {% else %}
-        <h5>register</h5>
+        <h5 class="heading sub_heading">Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">register</a></h5>
         {% endif %}
       </div>
     </div>
   </div>
   </div>
+
+  <div class="container">
+    <a href="{{url_for('index')}}"> <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" alt="" height=120px class="index-logo"></a>
+    <h6 class="heading page_heading">{% block page_heading %}{% endblock %}</h6>
+    {% block content %}
+    {% endblock %}
+  </div>
+
+
+  <!--jQuery before materialize.js-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!--Materialise JavaScript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+
+  <!--jQuery-->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+      $('.collapsible').collapsible();
+      $('select').material_select();
+    });
+    $('.timepicker').pickatime({
+      default: '00:00',
+      fromnow: 0,
+      twelvehour: false,
+      donetext: 'OK',
+      cleartext: 'Clear',
+      canceltext: 'Cancel',
+      container: undefined,
+      autoclose: false,
+      ampmclickable: false,
+      aftershow: function() {}
+    });
+    $('#textarea1').val('New Text');
+    $('#textarea1').trigger('autoresize');
+
+    var modal = document.getElementById('id01');
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+
+      }
+    };
+    document.getElementById("matfix").addEventListener("click", function(e) {
+      e.stopPropagation();
+    });
+    $(document).ready(function() {
+      $('select').formSelect();
+    });
+
+  </script>
+
 </html>

@@ -81,6 +81,21 @@ def add_recipe():
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
+    recipes=mongo.db.recipes
+    recipes.insert_one({
+        'recipe_name':request.form['recipe_name'],
+        'brief_description':request.form['brief_description'],
+        'category_name':request.form['category_name'],
+        'allergen_name':request.form['allergen_name'],
+        'prep_time':request.form['prep_time'],
+        'cook_time':request.form['cook_time'],
+        'image_file': request.form['image_file'],
+        'ingredients':request.form['ingredients'],
+        'method_description':request.form['method_description'],
+        'views': 0,
+        'user':session['username']
+    })
+    return redirect(url_for('get_recipes'))
 
 
 "Edit recipe form"

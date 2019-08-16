@@ -63,10 +63,6 @@ def register():
 def get_recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
-@app.route('/get_recipes')
-def get_recipes():
-
-
 "Add recipe form"
 
 @app.route('/add_recipe')
@@ -102,6 +98,13 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    the_recipe=mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
+    all_categories = mongo.db.category.find()
+    all_allergens = mongo.db.allergen.find()
+    return render_template('editrecipe.html',
+                            recipe=the_recipe,
+                            categories=all_categories,
+                            allergens=all_allergens)
 
 
 "Submit edited recipe to database"

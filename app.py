@@ -130,6 +130,11 @@ def update_recipe(recipe_id):
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
+    if request.method == 'GET':
+        flash("Are you sure you want to delete this recipe?")
+
+    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    return redirect (url_for('get_recipes'))
 
 
 "View full recipe"

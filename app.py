@@ -136,11 +136,23 @@ def delete_recipe(recipe_id):
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
-
+    recipe = mongo.db.recipes
+    recipe.find_one_and_update(
+        {'_id': ObjectId(recipe_id)},
+        {'$inc': {'views': 1}}
+    )
+    recipe_db = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    return render_template("viewrecipe.html", recipe=recipe_db)
 
 @app.route('/')
 @app.route('/recipes', methods=['GET', 'POST'])
 def index():
+    """Home page gets 6 recipes that are most popular based on views"""
+    recipes = mongo.db.recipes.find().sort([('views', DESCENDING)]).limit(6)
+
+    return render_template('index.html', recipes=recipes,
+                            categories=mongo.db.category.find(),
+                            allergens=mongo.db.allergen.find())
 
 
 "Recipes filter"

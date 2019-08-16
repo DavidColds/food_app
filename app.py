@@ -8,12 +8,9 @@ import bcrypt
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
-app.config["MONGO_URI"] = os.getenv('MONGO_URI')
+app.config["MONGO_URI"] = "mongodb+srv://root:r00tUser@myfirstcluster-np4or.mongodb.net/food_app?retryWrites=true&w=majority"
 app.secret_key = os.getenv("SECRET_KEY")
 
-app.config["MONGO_DBNAME"] = 'food_app'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
 
@@ -39,6 +36,7 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
+
 "User Registration Form"
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -57,11 +55,13 @@ def register():
 
     return render_template('register.html')
 
+
 "Get all recipes"
 
 @app.route('/get_recipes')
 def get_recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find())
+
 
 "Add recipe form"
 
@@ -71,7 +71,6 @@ def add_recipe():
                             categories=mongo.db.category.find(),
                             allergens=mongo.db.allergen.find(),
                             preparation=mongo.db.preparation.find())
-
 
 "Submit recipe to database"
 
@@ -107,6 +106,7 @@ def edit_recipe(recipe_id):
                             allergens=all_allergens)
 
 
+
 "Submit edited recipe to database"
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -125,6 +125,7 @@ def update_recipe(recipe_id):
         'user':session['username']
     })
     return redirect(url_for('get_recipes'))
+
 
 "Delete recipe from database"
 
@@ -158,7 +159,6 @@ def index():
     return render_template('index.html', recipes=recipes,
                             categories=mongo.db.category.find(),
                             allergens=mongo.db.allergen.find())
-
 
 "Recipes filter"
 
@@ -206,7 +206,6 @@ def search():
                                    recipes=recipes,
                                    categories=mongo.db.category.find(),
                                    allergen=allergens_mongo.db.category.find())
-
 
 if __name__ == "__main__":
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")

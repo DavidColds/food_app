@@ -157,8 +157,25 @@ def search():
                                    categories=mongo.db.category.find(),
                                    allergen=allergens_mongo.db.category.find())
 
+"Recipes search"
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    if request.method=='POST':
+
+        search_term = request.form.get("search_term")
+
+        mongo.db.recipes.create_index( [("$**", 'text')] )
+
+        cursor = mongo.db.recipes.find({ "$text": { "$search": search_term } })
+        recipes = [recipe for recipe in cursor]
+
+        return render_template('search.html', recipes=recipes, query=search_term)
+
+        return render_template("search.html",
+                                   recipes=recipes,
+                                   categories=mongo.db.category.find(),
+                                   allergen=allergens_mongo.db.category.find())
 
 if __name__ == "__main__":
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")

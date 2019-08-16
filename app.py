@@ -110,6 +110,21 @@ def edit_recipe(recipe_id):
 "Submit edited recipe to database"
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
+    recipe = mongo.db.recipes
+    recipe.update({'_id':ObjectId(recipe_id)},
+    {
+        'recipe_name':request.form.get('recipe_name'),
+        'brief_description':request.form.get('brief_description'),
+        'category_name':request.form.get('category_name'),
+        'allergen_name':request.form.get('allergen_name'),
+        'prep_time':request.form.get('prep_time'),
+        'cook_time':request.form.get('cook_time'),
+        'image_file': request.form.get('image_file'),
+        'ingredients':request.form.get('ingredients'),
+        'method_description':request.form.get('method_description'),
+        'user':session['username']
+    })
+    return redirect(url_for('get_recipes'))
 
 "Delete recipe from database"
 

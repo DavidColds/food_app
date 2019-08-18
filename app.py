@@ -172,16 +172,12 @@ def filter():
     if category_name is not None:
         filter_with['category_name'] = category_name
 
-    allergen_name = request.form.get('allergen_name')
-    if allergen_name is not None:
-        filter_with['allergen_name'] = allergen_name
-
-    exclude_allergen = request.form.getlist('allergen')
+    exclude_allergen = request.form.getlist('allergen_name')
     if exclude_allergen is None:
         exclude_allergen = []
 
     recipes = recipes.find({'$and': [filter_with,
-                         {'allergen': {'$nin': exclude_allergen}}]})
+                         {'allergen_name': {'$nin': exclude_allergen}}]})
 
     return render_template('index.html', recipes=recipes, categories=mongo.db.category.find(),
                                    allergens=mongo.db.allergen.find())

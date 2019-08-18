@@ -55,7 +55,11 @@ h5 {
 /*--------------Search Bar---------------*/
 
 .search-bar {
-  margin-top: 0px;
+  width: 250px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border: none;
 }
 
 .input-field input[type=search]+label {
@@ -462,6 +466,6 @@ hr {
 
   /*---------------Recipe Cards---------------*/
   .card .card-title {
-    font-size: 30px;
+    font-size: 35px;
   }
 }

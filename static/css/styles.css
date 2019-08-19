@@ -21,6 +21,7 @@
 .btn,
 .btn-large {
   background-color: black;
+
 }
 
 .btn:hover,
@@ -35,7 +36,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: #263238;
+  color: black;
 }
 
 .page_heading {
@@ -52,67 +53,29 @@ h5 {
   font-size: 15px;
 }
 
-/*--------------Search Bar---------------*/
-
-.search-bar {
-  width: 250px;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    border: none;
-}
-
-.input-field input[type=search]+label {
-  left: 0px;
-}
-
-.material-icons {
-  font-size: 20px;
-}
-
-.input-field input[type=search]~.material-icons {
-  font-size: 20px;
-}
- {
-  border-bottom: #37474f;
-  box-shadow: 0 1px 0 0 #37474f;
-  padding-left: 25px;
-}
- {
-  color: #263238	;
-}
-
-.input-field .prefix.active {
-  color: #37474f;
-}
-
-[type="checkbox"]:checked+label:before {
-  border-right: 2px solid #37474f;
-  border-bottom: 2px solid #37474f;
-}
-
-.btn:focus,
-.btn-large:focus,
-.btn-floating:focus {
-  background-color: #263238;
-}
 
 /*---------------Navbar---------------*/
 
+#topbarsearch .input-field .prefix {
+    width:2rem !important;
+    }
+#topbarsearch nav ul li:hover, nav ul li.active {
+        background-color: none !important;
+    }
+.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .autocomplete-content{
+    margin-left: 1rem !important;
+    }
+
 .index-logo {
   position:relative;
-    z-index:200;
-    left:50%;
-    margin-left:-160px;
-    top:30px;
-    display:block;
-    max-width: 300px;
-    width: 90%;
- }
-nav {
-  background-color: #90a4ae;
+  margin-left: 30px;
+
 }
 
+.nav-wrapper {
+    padding: 0 10px 0 10px;
+    background-color: #78909c;
+}
 .heading-row {
   margin-bottom: 5px;
 }
@@ -124,7 +87,7 @@ nav {
   height: 105vh;
   position: relative;
 }
-.jumbotron {
+ .recipe-wallpaper{
   background-image: url("../images/foodwp.jpg");
   background-size: cover;
   height: 105vh;
@@ -335,7 +298,7 @@ container {
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: #474e5d;
+  background-color: #263238;
   padding-top: 50px;
 }
 
@@ -402,6 +365,7 @@ hr {
   .submit_btn {
     height: 28px;
     font-size: 12px;
+
   }
 
   /*--------------Headings------------*/
@@ -422,22 +386,11 @@ hr {
   }
 
   /*---------------Navbar---------------*/
-  nav .brand-logo {
+  .nav .brand-logo {
     font-size: 30px;
   }
 
-  /*--------------Search Bar---------------*/
 
-
-  .material-icons {
-    font-size: 30px;
-  }
-
-  .input-field input[type=search]~.material-icons {
-    font-size: 25px;
-  }
-
-}
 
 /*-----------------------------------------Desktop media-----------------------------------------*/
 
@@ -447,12 +400,12 @@ hr {
   .submit_btn {
     height: 30px;
     font-size: 15px;
-    line-height: 30px;
+      ne-height: 30px;
   }
 
   /*--------------Headings------------*/
   .page_heading {
-    font-size: 50px;
+    font-size: 60px;
   }
 
   .sub_heading {

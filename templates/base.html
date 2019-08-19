@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
   <!--Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -16,6 +14,9 @@
   <!--Materialise CSS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!--Custom css-->
   <link rel="stylesheet" href="../static/css/styles.css" type="text/css" />
 
@@ -24,17 +25,23 @@
 
 <body>
   <nav>
-    <div class="search">
-      <form action="{{ url_for('search') }}" method="POST" class="search_box">
-        <div class="input-field search-bar">
-          <input id="search" type="search" required="" name="search_term">
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+    <div class="nav-wrapper">
+      <a href="{{url_for('index')}}"><img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" alt="" class="index-logo" height=60px</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i
+          class="material-icons">menu</i></a>
+      <ul class="hide-on-med-and-down right">
+        <li>
+          <div class="center row">
+            <div class="col s12 ">
+              <div class="row" id="topbarsearch">
+                <form action="{{ url_for('search') }}" method="POST" class="search_box">
+                  <div class="input-field col s6 s12 black-text search-bar">
+                    <input id="search" placeholder="search" id="autocomplete-input" class="autocomplete black-text" required="" name="search_term">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </li>
         <li><a href="{{ url_for('index') }}">Home</a></li>
         <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
 
@@ -49,6 +56,7 @@
         <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
       </ul>
+
       <ul class="side-nav" id="mobile-demo">
         <li><a href="{{ url_for('index') }}">Home</a></li>
         <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
@@ -65,7 +73,6 @@
   </nav>
 
   <div class="container">
-    <a href="{{url_for('index')}}"> <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" alt="" height=120px class="index-logo"></a>
     <h6 class="heading page_heading">{% block page_heading %}{% endblock %}</h6>
     {% block content %}
     {% endblock %}

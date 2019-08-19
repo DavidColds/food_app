@@ -2,15 +2,16 @@ from flask import Flask, render_template, redirect, request, url_for, session, f
 from flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import re
 import os
 import bcrypt
+load_dotenv()
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb+srv://root:r00tUser@myfirstcluster-np4or.mongodb.net/food_app?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.secret_key = os.getenv("SECRET_KEY")
-
 
 mongo = PyMongo(app)
 

@@ -5,15 +5,13 @@
 {% block content %}
 
 {% if 'user_name' not in session %}
-<div class="container center">
-  <a href="{{ url_for('index') }}" class="btn-floating red darken-1 tooltipped waves-effect waves-dark center custom-animate" data-tooltip="Reset Filters"><i class="material-icons">autorenew</i></a>
-</div>
-{% endif %}
 
+
+{% endif %}
 <div class="container">
   <form action="{{ url_for('filter') }}" method="POST">
     <div class="row">
-        <div class="input-field col s12 m6 ">
+        <div class="input-field col s6">
           <select multiple id="category_name" name="category_name">
             <option value="" disabled selected>Choose category</option>
             {% for category in categories %}
@@ -31,24 +29,13 @@
             {% endfor %}
           </select>
           <label class="white-text">Allergens</label>
-          <button class="btn submit_btn" type="submit">Search Recipes</button>
         </div>
+        <button class="btn submit_btn" type="submit">Search Recipes</button>
     </div>
   </form>
-
-  <!---  Search --->
       <div class="col s12 m6">
-        <div class="search">
-          <form action="{{ url_for('search') }}" method="POST" class="search_box">
-            <div class="input-field search-bar">
               <input id="search" type="search" required="" name="search_term">
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
-            <button class="btn submit_btn" type="submit">Search Recipes</button>
-          </form>
-        </div>
-      </div>
+</div>
 
   <!---  Card --->
   <div class="row" id="index">
@@ -71,6 +58,5 @@
     </div>
     {% endfor %}
   </div>
-</div>
 
 {% endblock %}

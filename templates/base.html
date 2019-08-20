@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
   <!--Font Awesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -20,59 +20,60 @@
   <!--Custom css-->
   <link rel="stylesheet" href="../static/css/styles.css" type="text/css" />
 
+
   <title>{% block page_title %}{% endblock %}</title>
 </head>
 
 <body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="{{url_for('index')}}"><img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" alt="" class="index-logo" height=60px</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i
-          class="material-icons">menu</i></a>
-      <ul class="hide-on-med-and-down right">
-        <li>
-          <div class="center row">
-            <div class="col s12 ">
-              <div class="row" id="topbarsearch">
-                <form action="{{ url_for('search') }}" method="POST" class="search_box">
-                  <div class="input-field col s6 s12 black-text search-bar">
-                    <input id="search" placeholder="search" id="autocomplete-input" class="autocomplete black-text" required="" name="search_term">
+      <div class="container-fluid">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="{{url_for('index')}}"><img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" alt="" class="index-logo" height="60px"</a> <a href="#" data-activates="mobile-demo" class="button-collapse">
+              <i class="material-icons">menu</i></a>
+            <ul class="hide-on-med-and-down right">
+              <li>
+                <div class="center row">
+                  <div class="col-xl-9 col-lg-8">
+                    <div class="row" id="topbarsearch">
+                      <form action="{{ url_for('search') }}" method="POST" class="header-search-form">
+                        <div class="input-field col s6 s12 black-text search-bar">
+                          <input id="search" type="text" placeholder="search" id="autocomplete-input" class="autocomplete black-text" required="" name="search_term">
+                          <button><i class="flaticon-search"></i></button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                </form>
-              </div>
-            </div>
+                </div>
+              </li>
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
+              {% if 'username' in session %}
+              <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+              {% else %}
+                    <li><a href="{{ url_for('login') }}"> Sign in </a> </li>
+                    <li><a href="{{ url_for('register') }}">Create Account</a></li>
+              {% endif %}
+
+            </ul>
+
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
+              {% if 'username' in session %}
+              <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+
+              {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+              <li><a href="{{ url_for('register') }}">Register</a></li>
+              {% endif %}
+            </ul>
           </div>
-        </li>
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
+        </nav>
+      </div>
 
-
-        {% if 'username' in session %}
-        <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-
-
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
-
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
-        {% if 'username' in session %}
-        <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container">
+  <div class="">
     <h6 class="heading page_heading">{% block page_heading %}{% endblock %}</h6>
     {% block content %}
     {% endblock %}
@@ -85,7 +86,7 @@
   <!--Materialise JavaScript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-
+  <script type="text/javascript" src=""></script>
 
   <!--jQuery-->
   <script type="text/javascript">
@@ -123,6 +124,56 @@
     $(document).ready(function() {
       $('select').formSelect();
     });
+    let sliderImages = document.querySelectorAll(".slide"),
+  arrowLeft = document.querySelector("#arrow-left"),
+  arrowRight = document.querySelector("#arrow-right"),
+  current = 0;
+
+// Clear all images
+function reset() {
+  for (let i = 0; i < sliderImages.length; i++) {
+    sliderImages[i].style.display = "none";
+  }
+}
+
+// Init slider
+function startSlide() {
+  reset();
+  sliderImages[0].style.display = "block";
+}
+
+// Show prev
+function slideLeft() {
+  reset();
+  sliderImages[current - 1].style.display = "block";
+  current--;
+}
+
+// Show next
+function slideRight() {
+  reset();
+  sliderImages[current + 1].style.display = "block";
+  current++;
+}
+
+// Left arrow click
+arrowLeft.addEventListener("click", function() {
+  if (current === 0) {
+    current = sliderImages.length;
+  }
+  slideLeft();
+});
+
+// Right arrow click
+arrowRight.addEventListener("click", function() {
+  if (current === sliderImages.length - 1) {
+    current = -1;
+  }
+  slideRight();
+});
+
+startSlide();
+
   </script>
 
 </html>

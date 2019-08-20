@@ -6,57 +6,70 @@
 
 {% if 'user_name' not in session %}
 
-
 {% endif %}
-<div class="container">
-  <form action="{{ url_for('filter') }}" method="POST">
-    <div class="row">
-        <div class="input-field col s6">
-          <select multiple id="category_name" name="category_name">
-            <option value="" disabled selected>Choose category</option>
-            {% for category in categories %}
-            <option value="{{category.category_name}}">{{category.category_name}}</option>
-            {% endfor %}
-          </select>
-          <label class="white-text">Category</label>
-        </div>
 
-        <div class="input-field col s12 m6 ">
-          <select multiple id="allergen_name" name="allergen_name">
-            <option value="" disabled selected>Choose allergen</option>
-            {% for allergy in allergens %}
-            <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
-            {% endfor %}
-          </select>
-          <label class="white-text">Allergens</label>
-        </div>
-        <button class="btn submit_btn" type="submit">Search Recipes</button>
+<header class="showcase">
+  <div class="content">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Goodfood_Market_Logo.png" class="logo" alt="Food App" height="60px">
+    <div class="title">
+      Welcome To GoodFood
     </div>
-  </form>
-      <div class="col s12 m6">
-              <input id="search" type="search" required="" name="search_term">
-</div>
+    <div class="text">
+      Your minimalistic food website
+    </div>
+  </div>
+</header>
 
-  <!---  Card --->
-  <div class="row" id="index">
-    {% for recipe in recipes %}
-    <div class="col s12 m6 l4">
-      <div class="card small">
-        <div class="card-image">
-          <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"><img src="{{ recipe.image_file }}" alt=""></a>
+
+    <div class="container">
+      <form action="{{ url_for('filter') }}" method="POST">
+        <div class="row">
+          <div class="input-field col s6">
+            <select multiple id="category_name" name="category_name">
+              <option value="" disabled selected>Choose category</option>
+              {% for category in categories %}
+              <option value="{{category.category_name}}">{{category.category_name}}</option>
+              {% endfor %}
+            </select>
+            <label class="white-text">Category</label>
+          </div>
+
+          <div class="input-field col s6 ">
+            <select multiple id="allergen_name" name="allergen_name">
+              <option value="" disabled selected>Choose allergen</option>
+              {% for allergy in allergens %}
+              <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
+              {% endfor %}
+            </select>
+            <label class="white-text">Allergens</label>
+          </div>
+          <button class="btn submit_btn" type="submit">Search Recipes</button>
         </div>
-        <div class="card-content">
-          <span class="card-title">{{ recipe.recipe_name }}</span>
-          <p>{{ recipe.brief_description }}</p>
-          <br>
-          <p> Allergen: {{ recipe.allergen_name }}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">View</a>
-        </div>
+      </form>
+    </div>
+
+
+<!---  Card --->
+<div class="container">
+<div class="row" id="index">
+  {% for recipe in recipes %}
+  <div class="col s12 m6 l4">
+    <div class="card small">
+      <div class="card-image">
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"><img src="{{ recipe.image_file }}" alt=""></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title">{{ recipe.recipe_name }}</span>
+        <p>{{ recipe.brief_description }}</p>
+        <br>
+        <p> Allergen: {{ recipe.allergen_name }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">View</a>
       </div>
     </div>
-    {% endfor %}
   </div>
-
+  {% endfor %}
+</div>
+</div>
 {% endblock %}

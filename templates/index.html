@@ -21,55 +21,54 @@
 </header>
 
 
-    <div class="container">
-      <form action="{{ url_for('filter') }}" method="POST">
-        <div class="row">
-          <div class="input-field col s6">
-            <select multiple id="category_name" name="category_name">
-              <option value="" disabled selected>Choose category</option>
-              {% for category in categories %}
-              <option value="{{category.category_name}}">{{category.category_name}}</option>
-              {% endfor %}
-            </select>
-            <label class="white-text">Category</label>
-          </div>
+<div class="container">
+  <form action="{{ url_for('filter') }}" method="POST">
+    <div class="row">
+      <div class="input-field col s6">
+        <select multiple id="category_name" name="category_name">
+          <option value="" disabled selected>Choose category</option>
+          {% for category in categories %}
+          <option value="{{category.category_name}}">{{category.category_name}}</option>
+          {% endfor %}
+        </select>
+        <label class="white-text">Category</label>
+      </div>
 
-          <div class="input-field col s6 ">
-            <select multiple id="allergen_name" name="allergen_name">
-              <option value="" disabled selected>Choose allergen</option>
-              {% for allergy in allergens %}
-              <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
-              {% endfor %}
-            </select>
-            <label class="white-text">Allergens</label>
-          </div>
-          <button class="btn submit_btn" type="submit">Search Recipes</button>
-        </div>
-      </form>
+      <div class="input-field col s6 ">
+        <select multiple id="allergen_name" name="allergen_name">
+          <option value="" disabled selected>Choose allergen</option>
+          {% for allergy in allergens %}
+          <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
+          {% endfor %}
+        </select>
+        <label class="white-text">Allergens</label>
+      </div>
+      <button class="btn submit_btn" type="submit">Search Recipes</button>
     </div>
+  </form>
+</div>
 
 
 <!---  Card --->
-<div class="container">
-<div class="row" id="index">
-  {% for recipe in recipes %}
-  <div class="col s12 m6 l4">
-    <div class="card small">
-      <div class="card-image">
-        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"><img src="{{ recipe.image_file }}" alt=""></a>
+<section>
+  <div class="row">
+    <div class="container">
+    <div class="col-md-9 col-xs-12">
+    {% for recipe in recipes %}
+    <label class="textOverImage" style="background-image:url({{recipe.image_file}})">
+      <h3>{{recipe.recipe_name}}</h3>
+      <div class="imgtxt">
+        <p>Meal Name:{{recipe.recipe_name}}</p>
+        <button type="button" id="btnview" class="btnview" onclick="window.location='{{url_for('view_recipe', recipe_id=recipe._id)}}'">View</button>
       </div>
-      <div class="card-content">
-        <span class="card-title">{{ recipe.recipe_name }}</span>
-        <p>{{ recipe.brief_description }}</p>
-        <br>
-        <p> Allergen: {{ recipe.allergen_name }}</p>
-      </div>
-      <div class="card-action">
-        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">View</a>
-      </div>
+    </label>
+    {% endfor %}
     </div>
-  </div>
-  {% endfor %}
-</div>
-</div>
-{% endblock %}
+    </div>
+    </div>
+</section>
+
+<!--end body of content-->
+
+<!--end of row/col-->
+ {% endblock %}

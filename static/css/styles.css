@@ -239,10 +239,7 @@ h5 {
 
 
 /*---------------index Cards---------------*/
-.container {
-    width: 1170px;
-    margin: 0 auto;
-  }
+
 
   @media (max-width: 380px) {
     .container {
@@ -312,6 +309,10 @@ h5 {
 }
 
 
+/*---------------view recipe---------------*/
+.recipe_image {
+    width: 90%;
+}
 
 /*---------------Add Recipe---------------*/
 textarea {

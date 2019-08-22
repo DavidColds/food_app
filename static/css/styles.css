@@ -2,7 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  margin: 1rem;
+  margin: 0.5rem;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
 }
 
 /*--------------Header--------------*/
@@ -147,7 +153,8 @@ body {
   }
 
   .content .logo {
-    height: 140px;
+    margin-top: 20px;
+    height: 100px;
     width: 140px;
   }
 
@@ -214,10 +221,7 @@ h5 {
 }
 
 /*---------------Navbar---------------*/
-.index-logo {
-  position: relative;
-  margin-left: 30px;
-}
+
 
 .nav-wrapper {
   padding: 0 10px 0 10px;
@@ -317,6 +321,17 @@ h5 {
 /*---------------Add Recipe---------------*/
 textarea {
   height: 200px;
+}
+/* ---------------------------------Footer-------------------*/
+
+.page-footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #78909c ;
+  color: black;
+  font-weight: 400;
+
 }
 
 /* ---------------------------------Login-------------------*/
@@ -551,9 +566,6 @@ hr {
   }
 
   /*---------------Navbar---------------*/
-  .nav .brand-logo {
-    font-size: 30px;
-  }
 
   /*-----------------------------------------Desktop media-----------------------------------------*/
   @media (min-width: 1024px) {

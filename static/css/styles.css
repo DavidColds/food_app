@@ -343,7 +343,7 @@ textarea {
 }
 .docs-footer {
     margin-top: 20px;
-    background-color: transparent;
+    background-color: #546e7a;
     border-top: 1px solid rgba(0,0,0,0.14);
     color: inherit;
 }
@@ -464,18 +464,6 @@ button:hover {
   opacity: 1;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,
-.signupbtn {
-  float: left;
-  width: 50%;
-}
 
 /* The Modal (background) */
 .modal {
@@ -595,15 +583,4 @@ hr {
     .page_heading {
       font-size: 60px;
     }
-
-    .sub_heading {
-      font-size: 30px;
-    }
-
-    /*---------------Navbar---------------*/
-    nav .brand-logo {
-      font-size: 50px;
-      padding-left: 25px;
-    }
-
   }

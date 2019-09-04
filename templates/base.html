@@ -121,25 +121,25 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $(".button-collapse").sideNav();
-      $('.collapsible').collapsible();
-      $('select').material_select();
+      $(".collapsible").collapsible();
+      $("select").material_select();
     });
-    $('.timepicker').pickatime({
-      default: '00:00',
+    $(".timepicker").pickatime({
+      default: "00:00",
       fromnow: 0,
       twelvehour: false,
-      donetext: 'OK',
-      cleartext: 'Clear',
-      canceltext: 'Cancel',
+      donetext: "OK",
+      cleartext: "Clear",
+      canceltext: "Cancel",
       container: undefined,
       autoclose: false,
       ampmclickable: false,
       aftershow: function() {}
     });
-    $('#textarea1').val('New Text');
-    $('#textarea1').trigger('autoresize');
+    $("#textarea1").val("New Text");
+    $("#textarea1").trigger("autoresize");
 
-    var modal = document.getElementById('id01');
+    var modal = document.getElementById("id01");
 
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -151,16 +151,16 @@
       e.stopPropagation();
     });
     $(document).ready(function() {
-      $('select').formSelect();
+      $("select").formSelect();
     });
-    let sliderImages = document.querySelectorAll(".slide"),
+    var sliderImages = document.querySelectorAll(".slide"),
       arrowLeft = document.querySelector("#arrow-left"),
       arrowRight = document.querySelector("#arrow-right"),
       current = 0;
 
     // Clear all images
     function reset() {
-      for (let i = 0; i < sliderImages.length; i++) {
+      for (var i = 0; i < sliderImages.length; i++) {
         sliderImages[i].style.display = "none";
       }
     }

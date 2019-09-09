@@ -22,8 +22,6 @@
 
   <!--Custom css-->
   <link rel="stylesheet" href="../static/css/styles.css" type="text/css" />
-
-
   <title>{% block page_title %}{% endblock %}</title>
 </head>
 
@@ -57,16 +55,13 @@
           <li><a href="{{ url_for('login') }}"> Sign in </a> </li>
           <li><a href="{{ url_for('register') }}">Create Account</a></li>
           {% endif %}
-
         </ul>
-
         <ul class="side-nav" id="mobile-demo">
           <li><a href="{{ url_for('index') }}">Home</a></li>
           <li><a href="{{ url_for('get_recipes') }}">All Recipes</a></li>
           {% if 'username' in session %}
           <li><a href="{{ url_for('add_recipe') }}">Create Recipes</a></li>
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
-
           {% else %}
           <li><a href="{{ url_for('login') }}">Login</a></li>
           <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -75,9 +70,6 @@
       </div>
     </nav>
   </div>
-
-
-
   <div class="">
     <h6 class="heading page_heading">{% block page_heading %}{% endblock %}</h6>
     {% block content %}
@@ -85,7 +77,6 @@
   </div>
   <br>
   <br>
-
   <footer class="page-footer docs-footer">
     <div class="container">
       <div class="row" style="margin-bottom: 0;">
@@ -121,7 +112,6 @@
             </li>
           </ul>
         </div>
-
       </div>
     </div>
     <div class="footer-copyright">

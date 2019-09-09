@@ -347,7 +347,18 @@ textarea {
     border-top: 1px solid rgba(0,0,0,0.14);
     color: inherit;
 }
+.social {
+  display: flex;
+  flex-direction: row;
+}
 
+.social__icon {
+  padding: 1rem;
+}
+
+.social__icon:first-child {
+  padding-left: 0;
+}
 /* ---------------------------------Login-------------------*/
 /* The Modal (background) */
 .modal {

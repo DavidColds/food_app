@@ -1,91 +1,94 @@
 {% extends 'base.html' %}
-{% block page_title %}Add Recipe{% endblock %}
+{% block page_title %}Edit Recipes{% endblock %}
 
-{% block page_heading %}Add Recipes{% endblock %}
+{% block page_heading %}Edit Recipes{% endblock %}
 
-<h3>Add Your Recipe</h3>
+<h3>Edit Your Recipe</h3>
 {% block content %}
-<div class="row">
-  <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
-    <!--Recipe Title-->
-    <div class="row">
-      <div class="input-field col s12">
+<div class="container">
+  <div class="row">
+    <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
+      <!--Recipe Title-->
+      <div class="row">
         <i class="material-icons prefix">restaurant</i>
-        <input id="recipe_name" name="recipe_name" type="text" class="validate">
+        <input id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}" type="text" class="validate">
         <label for="icon_prefix">Title</label>
       </div>
-    </div>
-    <!--Brief Description-->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">subject</i>
-        <input id="brief_description" name="brief_description" type="tel" class="validate">
-        <label for="icon_telephone">Short Description</label>
+      <!--Brief Description-->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">subject</i>
+          <input id="brief_description" name="brief_description" value="{{ recipe.brief_description }}" type="tel" class="validate">
+          <label for="icon_telephone">Short Description</label>
+        </div>
       </div>
-    </div>
-    <!--Catergories-->
+
+      <!--Catergories-->
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">priority_high</i>
+        <select multiple id="category_name" name="category_name">
+          <option value="" disabled selected>Choose category</option>
+          {% for category in categories %}
+          <option value="{{category.category_name}}">{{category.category_name}}</option>
+          {% endfor %}
+        </select>
+        <label>Category</label>
+      </div>
+
+      <!--Allergens-->
+
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">priority_high</i>
+        <select multiple id="allergen_name" name="allergen_name">
+          <option value="" disabled selected>Choose allergen</option>
+          {% for allergy in allergens %}
+          <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
+          {% endfor %}
+        </select>
+        <label>Allergens</label>
+      </div>
+  </div>
+
+
+  <!--Preparation Time-->
+  <div class="row" id="matfix">
     <div class="input-field col s12 m6">
-      <i class="material-icons prefix">priority_high</i>
-      <select multiple id="category_name" name="category_name">
-        <option value="" disabled selected>Choose category</option>
-        {% for category in categories %}
-        <option value="{{category.category_name}}">{{category.category_name}}</option>
-        {% endfor %}
-      </select>
-      <label>Category</label>
+      <i class="material-icons prefix">schedule</i>
+      <input id="prep_time" name="prep_time" type="text" class="timepicker">
+      <label for="icon_prefix">Preparation Time</label>
     </div>
-
-    <!--Allergens-->
-
+    <!--Cooking Time-->
     <div class="input-field col s12 m6">
-      <i class="material-icons prefix">priority_high</i>
-      <select multiple id="allergen_name" name="allergen_name">
-        <option value="" disabled selected>Choose allergen</option>
-        {% for allergy in allergens %}
-        <option value="{{allergy.allergen_name}}">{{allergy.allergen_name}}</option>
-        {% endfor %}
-      </select>
-      <label>Allergens</label>
+      <i class="material-icons prefix">schedule</i>
+      <input id="cook_time" name="cook_time" type="text" class="timepicker">
+      <label for="icon_prefix">Cooking Time</label>
     </div>
-</div>
-<!--Preparation Time-->
-<div class="row" id="matfix">
-  <div class="input-field col s12 m6">
-    <i class="material-icons prefix">schedule</i>
-    <input id="prep_time" name="prep_time" type="text" class="timepicker">
-    <label for="icon_prefix">Preparation Time</label>
   </div>
-  <!--Cooking Time-->
-  <div class="input-field col s12 m6">
-    <i class="material-icons prefix">schedule</i>
-    <input id="cook_time" name="cook_time" type="text" class="timepicker">
-    <label for="icon_prefix">Cooking Time</label>
-  </div>
-</div>
 
-<!--image-->
-<div class="row">
-  <div class="input-field col s12">
-    <i class="material-icons prefix">center_focus_strong</i>
-    <input id="image_file" name="image_file" type="text" class="validate">
-    <label for="icon_prefix">Image Link (full link)</label>
-  </div>
-</div>
-<h3>Add Your Ingredients</h3>
-<h4>Enter one ingredient on each line</h4>
 
-<!--Ingredient Title-->
-<div class="row">
+  <!--image-->
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">center_focus_strong</i>
+      <input id="image_file" name="image_file" value="{{ recipe.image_file }}" type="text" class="validate">
+      <label for="icon_prefix">Image Link (full link)</label>
+    </div>
+  </div>
+  <h3>Add Your Ingredients</h3>
+
+  <!--Ingredient Title-->
   <div class="input-field col s12">
-    <textarea id="ingredients" name="ingredients" class="ingredients" cols="20"></textarea>
-    <label for="textarea1">Ingredients</label>
+    <textarea id="ingredients" name="ingredients" class="ingredients" cols="20">
+    {{ recipe.ingredients }}
+  </textarea>
 
     <!--Method-->
     <h3>Add The Method</h3>
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="method_description" name="method_description" class="method_description" cols="20"></textarea>
-        <label for="textarea1">Method Description</label>
+        <textarea id="method_description" name="method_description" class="method_description" cols="20">
+        {{ recipe.method_description }}
+      </textarea>
       </div>
     </div>
     <div class="row">
@@ -94,5 +97,6 @@
         <i class="material-icons right">arrow_forward</i>
       </button>
     </div>
-
-    {% endblock %}
+  </div>
+</div>
+{% endblock %}

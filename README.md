@@ -91,9 +91,100 @@ I tested the application manually as follows:
 
 ## Deployment
 
-The application was coded on Atom Code Editor and with GItBash Terminal. I then committed the code GITHUB at https://github.com/DavidColds/food_app
-The application was deployed from GITHUB to Heroku at http://supreme-food.herokuapp.com/recipes
-My database is stored on MongoDB and is setup within Heroku.
+The application was coded on Atom Code Editor and with GItBash Terminal.
+
+1. Make a `requirements.txt` file utilizing the terminal command 'pip freeze > `requirements.txt`
+
+2. Make a `Procfile` with the terminal command `echo web: python app.py > Procfile`
+
+3. `git add` and `git commit` the new prerequisites from the requirements.txt file and Procfile, then 'git push' the undertaking to GitHub.
+
+4. Go to [Heroku](https://dashboard.heroku.com/) website.
+
+5. Make another application (app) on the [Heroku](https://dashboard.heroku.com/) website by tapping the "New" button on your dashboard. Name your app, followed by selecting Europe as your region.
+
+6. Select application
+
+7. In the "Deployment Method" section, check to see if the application is already connected to GitHub. If not connected then click the relevant button to link the Heroku website to the dashboard.
+
+8. Affirm the connecting of the Heroku application to the right GitHub repository.
+
+9. In the application dashboard, click on "Settings" > "Reveal Config Vars".
+
+10. Set the accompanying config vars:
+
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 2.8.0.1.7
+MONGO_URI | `mongodb+srv://root:<password>@myfirstcluster-np4or.mongodb.net/test?retryWrites=true&w=majority`
+
+PORT | 28017
+SECRET_KEY | `<your_secret_key>`
+
+- To retrieve your MONGO_URI please reference the official MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/)
+
+11. On the dashboard click "Deploy or alternatively in the "Automatic Deployment" section enable "Automatic Deploys" (optional).
+
+12. In the "Manual Deploy" section, set the branch to "master" then click "Deploy Branch."
+
+13. Enjoy
+
+#### Cloning the repository
+
+1. Open in terminal
+2. Change the present working directory to the area where you wish to place the cloned directory.
+3. Clone the repository or use the link below.
+
+```console
+git clone https://github.com/DavidColds/food_app
+```
+
+Deploy your changes, make some changes to the code you just cloned and deploy them to Heroku using Git.
+
+#### How to access the live application
+
+- A live demonstration is accessible by clicking [here](http://supreme-food.herokuapp.com/).
+
+#### How to run things locally
+
+
+1. Download the project onto a PC and open with a source-code editor.
+
+2. In the app.py file set the IP address and the PORT to the following:
+
+```console
+'IP', '127.0.0.1'
+```
+
+```console
+'PORT', '28017'
+```
+
+3. Install all of the prerequisites shown in the requirements.txt file via opening a Command-line interface (CLI) and navigating to the project root or by opening an integrated terminal and entering the following command:
+
+> Please Note: The CLI method for interacting with a computer may vary dependant upon the operating system in use.
+
+```console
+pip install -r requirements.txt
+```
+
+4. Initiate the app by entering the following command into a relevant terminal:
+
+```console
+export PORT=28017
+and then
+python app.py
+```
+
+5. A message in your terminal will inform you that the project is now running with the following message:
+
+```console
+Running on http://127.0.0.1:28017/ (Press CTRL+C to quit)
+```
+
+6. To display the project, open the above URL (localhost:28017)
+
 
 ## Credits
 

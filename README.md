@@ -21,6 +21,11 @@ The home page blur. When accessing the website, the home page will create a blur
 On the front page there is a list of the most 6 popular recipes in descending order. The full recipes list can also be viewed in the "All recipes" page.
 Each recipe can be clicked on to view the full recipe as a single recipe. If the user submitted this recipe they are able to edit or delete it if they wish.
 
+## wireframes 
+
+The wireframe was created in AdobeXD
+![wireframes](https://user-images.githubusercontent.com/44336390/64869490-c4885c80-d641-11e9-96a5-7ce8bebec343.png)
+
 ## Technologies Used
 
 Throughout this project I have used

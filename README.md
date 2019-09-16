@@ -196,6 +196,7 @@ Running on http://127.0.0.1:28017/ (Press CTRL+C to quit)
 ### Special thanks to
 
 My Tutor and Mentor, Anthony Ngene for helping me Throughout this project.
+And to the people on Slack who helped me with the code when I got stuc. 
 
 ### Media
 
@@ -205,6 +206,7 @@ For the blurred landing page I visited Brad Traversy on https://codepen.io/ and 
 ### Design
 
 For my cards design I looked at the : http://www.mojomarketplace.com/item/elara-pro-beautiful-wordpress-food-blog-theme/demo and then tried to make it.
+For the color pallette I used [CollorsWall](https://colorswall.com/palette/6/).
 
 ### Recipes
 
